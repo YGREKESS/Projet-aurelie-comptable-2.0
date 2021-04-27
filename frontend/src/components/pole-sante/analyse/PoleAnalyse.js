@@ -13,6 +13,7 @@ import Tables from "./Tables";
 import AccordeonUserSelected from "./AccordeonUserSelected";
 import { getPraticiens } from "../../../2-actions/poleActions";
 import CloseIcon from "@material-ui/icons/Close";
+import ChartAnalyse from "./ChartAnalyse";
 
 export default function PoleAnalyse() {
   const { id } = useParams();
@@ -195,7 +196,7 @@ export default function PoleAnalyse() {
           </div>
         ) : null}
       </div>
-
+      <ChartAnalyse />
       {declarationChoosed && specialites && (
         <div className="tables-container">
           <Tables

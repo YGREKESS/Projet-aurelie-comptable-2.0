@@ -967,6 +967,32 @@
 .span-user-selected span svg:hover {
   color: rgb(143, 143, 143);
 }
+/* Chart */
+.chart-analyse-page {
+  background-color: #ffff;
+  height: auto;
+  /*   min-height: 1200px;
+ */
+  width: 1000px;
+  margin: auto;
+}
+.chart-analyse-page .to-pdf {
+  padding-top: 4rem;
+  background-color: #ffff;
+  width: 100%;
+  height: auto;
+}
+.chart-container {
+  width: 80%;
+  height: 500px;
+  margin: auto;
+}
+@media print {
+  .print-button {
+    display: none;
+  }
+}
+
 /* DONNEES GLOBALES */
 .donnees-globales-container {
   width: 100%;

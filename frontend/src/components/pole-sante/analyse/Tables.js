@@ -8,6 +8,7 @@ import {
   calculRepartitionTaxeSalaire,
   repartitionName,
 } from "../../../utils";
+import ChartAnalyse from "./ChartAnalyse";
 import Table1 from "./Table1";
 import Table2 from "./Table2";
 import Table3 from "./Table3";
@@ -1708,6 +1709,8 @@ export default function Tables({
 
   return (
     <div>
+      <ChartAnalyse />
+
       {!userSelected ? (
         <Table1 columns={columns_Table_1} data={data_Table_1} />
       ) : null}
