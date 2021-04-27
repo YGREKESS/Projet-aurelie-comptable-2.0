@@ -1,0 +1,56 @@
+.app-bar {
+  height: auto;
+  width: 100%;
+  min-height: 12rem;
+  background-color: #379ce5;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  color: #ffff;
+  transition: 1s;
+}
+.app-bar h1 {
+  font-weight: 400;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  margin-left: 1rem;
+}
+.app-bar h2:nth-child(1) {
+  margin-bottom: 0;
+  margin-right: 1rem;
+}
+.app-bar h2:nth-child(2) {
+  margin-top: 0.5rem;
+  margin-bottom: auto;
+  margin-right: 1rem;
+}
+.app-bar h2 {
+  align-self: flex-end;
+  justify-self: baseline;
+  font-weight: 300;
+  color: #ffff;
+}
+.app-bar h2 span {
+  font-weight: 400;
+}
+.app-bar ul {
+  display: flex;
+  padding: 0;
+  margin: 0;
+  margin-left: 1rem;
+}
+.app-bar ul a {
+  color: #ffff;
+  margin-right: 1rem;
+  text-decoration: none;
+  display: block;
+  height: 2.5rem;
+  transition: 0.1s;
+}
+.app-bar ul a:hover {
+  border-bottom: 3px solid #ffff;
+}
+.app-bar ul a li {
+  list-style-type: none;
+}

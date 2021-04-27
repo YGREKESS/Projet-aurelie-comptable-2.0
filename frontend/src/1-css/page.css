@@ -1,0 +1,14 @@
+.page {
+  height: auto;
+  min-height: 100%;
+  /*   background: #eaeff1; */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+  background: #ffff;
+  transition: 1s;
+}
+.page::-webkit-scrollbar {
+  display: none;
+}

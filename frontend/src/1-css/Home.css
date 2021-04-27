@@ -1,0 +1,404 @@
+.home-declaration {
+  position: relative;
+  overflow-x: hidden;
+  height: auto;
+  min-height: 100vh;
+  overflow-y: scroll;
+  background-color: #18202c;
+  transform: translateX(0);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  z-index: 0;
+}
+.home-declaration::-webkit-scrollbar {
+  display: none;
+}
+.home-declaration .btn-direction {
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
+  font-weight: 300;
+  background-color: #379ce5;
+}
+.home-declaration .btn-direction.btn-right {
+  position: absolute;
+  right: 2rem;
+  bottom: 0;
+  top: 0;
+  z-index: 5;
+}
+.home-declaration .btn-direction.btn-left {
+  position: absolute;
+  left: 2rem;
+  bottom: 0;
+  top: 0;
+  z-index: 5;
+}
+/* Modal */
+.modal-home-form {
+  width: 25rem;
+  height: 15rem;
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.modal-home-form svg {
+  color: green;
+}
+.modal-home-form p {
+  font-size: 25px;
+  text-align: center;
+}
+/* Form */
+.home-declaration-form {
+  position: relative;
+  z-index: 2;
+  width: 100vw;
+  height: auto;
+  overflow-y: hidden;
+  align-self: flex-start;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: #18202c;
+  margin: auto;
+}
+.home-declaration-form::-webkit-scrollbar {
+  display: none;
+}
+.home-declaration-form:nth-child(5) {
+  align-items: center;
+}
+.home-declaration-form .user-details {
+  padding: 2rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-align: left;
+  border-radius: 0;
+  background-color: #379ce5;
+  color: #ffff;
+}
+.img-pencil {
+  position: absolute;
+  top: 0;
+  right: 5rem;
+  z-index: 4;
+  transform: rotate(0deg);
+  width: 400px;
+}
+.sous-part {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  height: auto;
+  min-height: 38rem;
+  background-color: #ffff;
+  max-width: 60rem;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  border-radius: 2px;
+  text-align: justify;
+  box-shadow: rgba(0, 0, 0, 0.952) 0px 5px 15px;
+}
+.sous-part .div-form-group-container .form-group {
+  padding: 2rem 3rem;
+  width: 100%;
+  min-height: 12rem;
+}
+.sous-part .div-form-group-container .form-group label {
+  display: inline;
+  background: #379ce5;
+  text-align: left;
+  margin-right: auto;
+  color: #ffff;
+  font-size: 18px;
+  padding: 0.5rem;
+  font-weight: 400;
+}
+.sous-part .div-form-group-container .form-group input,
+.sous-part .div-form-group-container .form-group select {
+  margin-bottom: 1rem;
+  background-color: #ffff;
+  padding: 0 0.5rem;
+  border: 1px solid rgba(41, 40, 40, 0.192);
+}
+.sous-part.charge-part {
+  width: auto;
+}
+
+/* Charge part */
+.charge-part .div-form-group-container {
+  width: 50%;
+}
+.charge-part .div-form-group-container:nth-last-child(2) {
+  margin-right: auto;
+}
+.charge-part .div-form-group-container:nth-child(1),
+.charge-part .div-form-group-container:nth-child(4),
+.charge-part .div-form-group-container:nth-child(5),
+.charge-part .div-form-group-container:nth-child(8),
+.charge-part .div-form-group-container:nth-child(9),
+.charge-part .div-form-group-container:nth-child(12),
+.charge-part .div-form-group-container:nth-child(13) {
+  background-color: aliceblue;
+}
+.charge-part
+  .div-form-group-container
+  .form-group
+  .home-declaration-question-input {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.charge-part
+  .div-form-group-container
+  .form-group
+  .home-declaration-question-input
+  p {
+  margin-right: 1rem;
+}
+
+.charge-part
+  .div-form-group-container
+  .form-group
+  .home-declaration-question-input
+  input {
+  margin-bottom: 0;
+  margin-left: auto;
+  width: 4rem;
+}
+.register-part .div-form-group-container .form-group select {
+  width: 100%;
+}
+
+/* Validation part */
+.validation-part.sous-part {
+  margin: 16rem auto 4rem auto;
+  padding: 0;
+  min-height: 0;
+  box-shadow: none;
+  width: 80%;
+}
+.img-meeting {
+  position: absolute;
+  top: -145%;
+  right: -25%;
+}
+.validation-part.sous-part .div-form-group-container {
+  width: 80%;
+  margin: auto;
+}
+.validation-part h2 {
+  margin: 0;
+  color: #ffff;
+  background-color: #379ce5;
+  font-size: 40px;
+  font-weight: 400;
+  text-align: center;
+  text-decoration: none;
+  line-height: 64px;
+}
+.validation-part p input {
+  width: 20px;
+  height: 20px;
+  min-width: 0;
+  display: block;
+  margin: 2rem auto;
+  margin-bottom: 2rem;
+}
+.validation-part button {
+  height: 5rem;
+  width: 100%;
+  font: 400 20px "Roboto", sans-serif;
+}
+.sous-part .div-form-group-container .form-group input.error {
+  border: 1px solid red;
+}
+.validation-part p input.error {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 1px solid red;
+}
+.validation-part span.error {
+  width: 100%;
+  text-align: center;
+  display: block;
+  margin: 2rem 0;
+  color: red;
+}
+
+/* Mentions legales */
+.mentions-legales,
+.contact-page {
+  background-color: #18212d;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+.header-page {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.header-page svg {
+  color: #ffff;
+  cursor: pointer;
+  transition: 0.25s;
+}
+.header-page svg:hover {
+  transform: scale(1.1);
+}
+.header-page h1 {
+  background-color: #379ce5;
+  color: #ffff;
+  padding: 0.5rem;
+  width: min-content;
+}
+.mentions-legales .mentions-legales-part {
+  width: 80%;
+  margin: auto;
+  margin-bottom: 2rem;
+}
+.mentions-legales .mentions-legales-part h4 {
+  background-color: #379ce5;
+  display: block;
+  width: fit-content;
+  color: #ffff;
+  padding: 0.5rem;
+  margin: 0;
+  text-align: left;
+}
+.mentions-legales .mentions-legales-part p {
+  color: #ffff;
+  text-align: justify;
+}
+
+/* Contact */
+
+.contact-form {
+  flex: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 60%;
+  background-color: #10161f;
+  margin-bottom: 2rem;
+  padding: 2rem;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.contact-form .form-group,
+.last-firstname-container {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+.contact-form .last-firstname-container .form-group {
+  width: 40%;
+  margin: 0;
+}
+.contact-form .form-group label {
+  background-color: #379ce5;
+  color: #ffff;
+  display: block;
+  width: fit-content;
+  padding: 0.5rem;
+  margin-right: auto;
+  font-size: 20px;
+}
+.contact-form input {
+  width: 100%;
+  font-size: 18px;
+  height: 2rem;
+  margin-bottom: 1rem;
+}
+.contact-form textarea {
+  width: 100%;
+  font-size: 18px;
+  border-radius: 2px;
+}
+.contact-form .form-validate {
+  margin: 3rem auto;
+  width: 100%;
+}
+.contact-form .form-validate button {
+  width: 100%;
+}
+
+@media only screen and (max-width: 1200px) {
+  .part {
+    height: auto;
+    overflow-y: scroll;
+  }
+  .home-declaration {
+    max-height: none;
+  }
+  .home-declaration img {
+    display: none;
+  }
+}
+@media only screen and (max-width: 990px) {
+  .home-declaration .btn-direction {
+    width: 4rem;
+    height: 4rem;
+  }
+  .step-count ul li {
+    width: 20%;
+  }
+  .sous-part {
+    max-width: 70vw;
+    min-height: 40rem;
+    margin-bottom: 8rem;
+  }
+  .home-declaration .btn-direction.btn-right {
+    top: auto;
+    bottom: 2rem;
+    left: auto;
+    right: 2rem;
+  }
+  .home-declaration .btn-direction.btn-left {
+    top: auto;
+    bottom: 2rem;
+    left: 2rem;
+    right: auto;
+  }
+}
+@media only screen and (max-width: 650px) {
+  .register-part .div-form-group-container:nth-child(1),
+  .register-part .div-form-group-container:nth-child(2),
+  .register-part .div-form-group-container:nth-child(3),
+  .register-part .div-form-group-container:nth-child(4) {
+    width: 100%;
+  }
+  .sous-part {
+    min-height: 50rem;
+  }
+  .contact-form {
+    width: 100%;
+  }
+  .contact-form .form-group,
+  .last-firstname-container {
+    width: 80%;
+  }
+}
