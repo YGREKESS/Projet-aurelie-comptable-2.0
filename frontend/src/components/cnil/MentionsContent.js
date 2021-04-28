@@ -39,10 +39,6 @@ export default function MentionsContent({ mentions }) {
   };
   const { register, handleSubmit, reset, errors } = useForm({});
 
-  useEffect(() => {
-    console.log(parties);
-    return () => {};
-  }, []);
   return (
     <form
       className="form-mentions-legales form"

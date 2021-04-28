@@ -50,8 +50,11 @@ export default function ListeMetiers() {
       dispatch(getMetiers());
       dispatch(resetSuccessMetier());
     }
+    if (errorDelete || errorAdd) {
+      dispatch(resetSuccessMetier());
+    }
     return () => {};
-  }, [successDelete, successAdd]);
+  }, [successDelete, successAdd, errorDelete, errorAdd]);
 
   return (
     <div className="liste-metier-component">

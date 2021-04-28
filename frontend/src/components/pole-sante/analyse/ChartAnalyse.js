@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   BarChart,
   Bar,
@@ -13,207 +13,186 @@ import {
 import domtoimage from "dom-to-image";
 import { saveAs } from "file-saver";
 import MaterialTable from "material-table";
+import Accordion from "@material-ui/core/Accordion";
+import AccordionSummary from "@material-ui/core/AccordionSummary";
+import AccordionDetails from "@material-ui/core/AccordionDetails";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
-export default function ChartAnalyse() {
-  const dataChart = [
-    {
-      name: "test5",
-      Simulation: 82,
-      Seghrouchni: 12,
-    },
-    {
-      name: "test53",
-      Simulation: 120,
-      Seghrouchni: 12,
-    },
-    {
-      name: "test521",
-      Simulation: 210,
-      Seghrouchni: 12,
-    },
-    {
-      name: "test525",
-      Simulation: 200,
-      Seghrouchni: 12,
-    },
-    {
-      name: "test5",
-      Simulation: 82,
-      Seghrouchni: 12,
-    },
-    {
-      name: "test53",
-      Simulation: 120,
-      Seghrouchni: 12,
-    },
-    {
-      name: "test521",
-      Simulation: 210,
-      Seghrouchni: 12,
-    },
-    {
-      name: "test525",
-      Simulation: 200,
-      Seghrouchni: 12,
-    },
-  ];
-
-  const data = [
-    {
-      name: "Loyer",
-      analyse: 13.99,
-    },
-    {
-      name: "Electricité",
-      analyse: 13.99,
-    },
-    {
-      name: "Eau",
-      analyse: 13.99,
-    },
-    {
-      name: "Internet",
-      analyse: 13.99,
-    },
-    {
-      name: "Loyer",
-      analyse: 13.99,
-    },
-    {
-      name: "Electricité",
-      analyse: 13.99,
-    },
-    {
-      name: "Eau",
-      analyse: 13.99,
-    },
-    {
-      name: "Internet",
-      analyse: 13.99,
-    },
-    {
-      name: "Loyer",
-      analyse: 13.99,
-    },
-    {
-      name: "Electricité",
-      analyse: 13.99,
-    },
-    {
-      name: "Eau",
-      analyse: 13.99,
-    },
-    {
-      name: "Internet",
-      analyse: 13.99,
-    },
-  ];
+export default function ChartAnalyse({ data_2, pole, userSelected }) {
+  const [dataChart, setDataChart] = useState(
+    data_2.filter((charge) => charge.name !== "Frais de fonctionnement mensuel")
+  );
+  const [dataTable, setDataTable] = useState(data_2);
 
   const columns = [
     {
       title: "Charge",
       field: "name",
       headerStyle: {
+        display: "none",
         fontSize: "15px",
         padding: "16px 0",
       },
-      cellStyle: {
-        backgroundColor: "#039be5",
-        color: "#FFFF",
-        fontSize: "15px",
-        padding: "16px 0",
-        textAlign: "center",
+      cellStyle: (cellValue, rowData) => {
+        return {
+          backgroundColor: "#039be5",
+          color: "#FFFF",
+          fontSize: "15px",
+          padding: "16px 0",
+          textAlign: "center",
+          fontWeight:
+            rowData.name === "Frais de fonctionnement mensuel"
+              ? "bold"
+              : "normal",
+        };
+      },
+      render: (rowData) => {
+        if (rowData.name === "Frais de fonctionnement mensuel") {
+          return "TOTAL";
+        } else {
+          return rowData.name;
+        }
       },
     },
     {
       title: "Analyse",
       field: "analyse",
       headerStyle: {
+        display: "none",
         fontSize: "15px",
         padding: "16px 0",
       },
-      cellStyle: {
-        fontSize: "14px",
-        padding: "16px 0",
-        fontWeight: "bold",
-        textAlign: "center",
+      cellStyle: (cellValue, rowData) => {
+        return {
+          fontWeight: "bold",
+          color: "#ffff",
+          fontSize: "20px",
+          padding: "16px 0",
+          textAlign: "center",
+          backgroundColor:
+            cellValue > 0 ? "#fb5c5c" : cellValue < 0 ? "#589458" : "lightgray",
+        };
       },
     },
   ];
 
   const pdfDownload = () => {
+    const pdf = document.getElementById("to-pdf");
     domtoimage
-      .toBlob(document.getElementById("to-pdf"), {
-        width: 1000,
-        height: 1600,
+      .toBlob(pdf, {
+        width: pdf.scrollWidth,
+        height: pdf.scrollHeight,
       })
       .then(function (blob) {
-        saveAs(blob, "my-node.png");
+        saveAs(blob, `Analyse-${userSelected.lastname}`);
       });
   };
 
+  useEffect(() => {
+    setDataChart(
+      data_2.filter(
+        (charge) => charge.name !== "Frais de fonctionnement mensuel"
+      )
+    );
+    setDataTable(data_2);
+
+    return () => {};
+  }, [data_2]);
+
   return (
-    <div className="chart-analyse-page">
-      <button className="print-button" onClick={pdfDownload}>
-        Download as pdf
-      </button>
-      <div id={"to-pdf"} className="to-pdf">
-        <div className="chart-container">
-          <ResponsiveContainer
-            width="100%"
-            height="100%"
-            margin={{
-              top: 5,
-              right: 0,
-              left: 0,
-              bottom: 5,
-            }}
-          >
-            <BarChart
-              width={500}
-              height={300}
-              data={dataChart}
-              margin={{
-                top: 5,
-                right: 30,
-                left: 20,
-                bottom: 5,
-              }}
-            >
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="name" />
-              <YAxis />
-              <Tooltip />
-              <Legend />
-              <Bar dataKey="Seghrouchni" fill="#8884d8" />
-              <Bar dataKey="Simulation" fill="#82ca9d" />
-            </BarChart>
-          </ResponsiveContainer>
+    <Accordion
+      className="accordion-chart-analyse"
+      style={{
+        marginTop: "4rem",
+        boxShadow: "none",
+        borderBottom: "1px solid rgba(128, 128, 128, 0.295)",
+      }}
+    >
+      <AccordionSummary>
+        <div
+          style={{ display: "flex", flexDirection: "column", margin: "auto" }}
+        >
+          <h2 style={{ width: "100%", color: "#379ce5", margin: "0" }}>PDF</h2>
+          <ExpandMoreIcon
+            style={{ fontSize: "50px", color: "#379ce5", margin: "auto" }}
+          />
         </div>
-        <MaterialTable
-          title=""
-          columns={columns}
-          data={data}
-          options={{
-            paging: false,
-            search: false,
-            sorting: false,
-            headerStyle: {
-              backgroundColor: "#18212D",
-              fontSize: "18px",
-              color: "#FFF",
-              borderBottom: "none",
-              textAlign: "center",
-            },
-          }}
-          style={{
-            width: "80%",
-            margin: " 4rem auto",
-            boxShadow: "none",
-            padding: "0",
-          }}
-        />
-      </div>
-    </div>
+      </AccordionSummary>
+      <AccordionDetails style={{ display: "block" }}>
+        <div className="chart-analyse-page">
+          <div id={"to-pdf"} className="to-pdf">
+            <div className="user-details">
+              <p>{userSelected.lastname + " " + userSelected.firstname}</p>
+              <p>{pole.name}</p>
+              <p>{userSelected.specialite}</p>
+            </div>
+            <div className="chart-container">
+              <ResponsiveContainer
+                width="100%"
+                height="100%"
+                margin={{
+                  top: 5,
+                  right: 0,
+                  left: 0,
+                  bottom: 5,
+                }}
+              >
+                <BarChart
+                  width={500}
+                  height={300}
+                  data={dataChart}
+                  margin={{
+                    top: 5,
+                    right: 30,
+                    left: 20,
+                    bottom: 5,
+                  }}
+                >
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="name" />
+                  <YAxis />
+                  <Tooltip />
+                  <Legend
+                    wrapperStyle={{
+                      bottom: "-15px",
+                      width: "100%",
+                      whiteSpace: "nowrap",
+                    }}
+                  />
+                  <Bar dataKey={userSelected.specialite} fill="#8884d8" />
+                  <Bar dataKey={userSelected.lastname} fill="#82ca9d" />
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
+            <MaterialTable
+              title=""
+              columns={columns}
+              data={dataTable}
+              options={{
+                paging: false,
+                search: false,
+                sorting: false,
+                headerStyle: {
+                  backgroundColor: "#18212D",
+                  fontSize: "18px",
+                  color: "#FFF",
+                  borderBottom: "none",
+                  textAlign: "center",
+                },
+              }}
+              style={{
+                width: "80%",
+                margin: " 4rem auto",
+                boxShadow: "none",
+                padding: "0",
+              }}
+            />
+          </div>
+          <button className="print-button" onClick={pdfDownload}>
+            Télécharger PDF
+          </button>
+        </div>
+      </AccordionDetails>
+    </Accordion>
   );
 }

@@ -196,7 +196,6 @@ export default function PoleAnalyse() {
           </div>
         ) : null}
       </div>
-      <ChartAnalyse />
       {declarationChoosed && specialites && (
         <div className="tables-container">
           <Tables

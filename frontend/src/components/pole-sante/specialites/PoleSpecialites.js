@@ -50,6 +50,7 @@ export default function PoleSpecialites() {
     }
     if (errorUpdate) {
       notify.show(errorUpdate, "error", 3000, "#0E1717");
+      dispatch(resetSuccessSpecialite());
     }
     if (successAdd) {
       notify.show(
@@ -62,6 +63,7 @@ export default function PoleSpecialites() {
     }
     if (errorAdd) {
       notify.show(errorAdd, "error", 3000, "#0E1717");
+      dispatch(resetSuccessSpecialite());
     }
     if (successDelete) {
       notify.show("La spécialité a été supprimée !", "danger", 3000, "#0E1717");
@@ -70,6 +72,7 @@ export default function PoleSpecialites() {
     }
     if (errorDelete) {
       notify.show(errorDelete, "error", 3000, "#0E1717");
+      dispatch(resetSuccessSpecialite());
     }
     return () => {};
   }, [

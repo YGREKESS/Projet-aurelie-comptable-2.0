@@ -41,6 +41,7 @@ function Dashboard(props) {
       notify.show("Le profil a été mis à jour !", "success", 3000);
       if (userUpdateInfos._id === userLoginInfos._id) {
         dispatch(getInfos(userLoginInfos._id, userLoginInfos.token));
+        dispatch(getAllUsers(userLoginInfos.token));
       } else {
         dispatch(getAllUsers(userLoginInfos.token));
       }

@@ -981,16 +981,42 @@
   background-color: #ffff;
   width: 100%;
   height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.user-details {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  height: 5rem;
+  align-items: center;
+  margin-bottom: 5rem;
+}
+.user-details p {
+  white-space: nowrap;
+  background: #379ce5;
+  display: block;
+  width: auto;
+  height: auto;
+  padding: 0.5rem;
+  color: #ffff;
 }
 .chart-container {
   width: 80%;
-  height: 500px;
+  height: 600px;
   margin: auto;
 }
-@media print {
-  .print-button {
-    display: none;
-  }
+.print-button {
+  background: #379ce5;
+  text-align: center;
+  color: #ffff;
+  width: 100%;
+  margin-top: 1rem;
+  font: 400 20px "Roboto", sans-serif;
+  height: 3rem;
+  text-transform: uppercase;
 }
 
 /* DONNEES GLOBALES */

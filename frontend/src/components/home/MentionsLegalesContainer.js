@@ -12,7 +12,6 @@ export default function MentionsLegales(props) {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log(props);
     dispatch(getMentions());
     return () => {};
   }, []);

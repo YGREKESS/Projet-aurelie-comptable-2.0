@@ -5,7 +5,6 @@ import {
   createUser,
   sendEmail,
   updateInfos,
-  userSuccessReset,
 } from "../../2-actions/userActions";
 import EmailIcon from "@material-ui/icons/Email";
 import Notifications, { notify } from "react-notify-toast";
@@ -21,13 +20,6 @@ export default function FormUserInfos({
 }) {
   const { register, handleSubmit, reset, watch, errors } = useForm();
   const dispatch = useDispatch();
-
-  const userSendEmail = useSelector((state) => state.userSendEmail);
-  const {
-    loading: loadingEmail,
-    success: successSend,
-    error: errorSend,
-  } = userSendEmail;
 
   const formUser = [
     {
@@ -62,9 +54,9 @@ export default function FormUserInfos({
       firstname: data.firstname,
       phone: data.phone ? data.phone : "00-00-00-00-00",
       email: data.email,
-      pole: data.pole,
+      pole: data.pole ? data.pole : user.pole,
       specialite: data.specialite,
-      statut: data.statut,
+      statut: data.statut ? data.statut : user.statut,
     };
     if (!create) {
       userObject["_id"] = user._id;
@@ -74,18 +66,6 @@ export default function FormUserInfos({
       dispatch(createUser(userObject, token));
     }
   };
-
-  useEffect(() => {
-    if (successSend) {
-      notify.show("L'email a été envoyé à l'utilisateur !", "success", 3000);
-      dispatch(userSuccessReset());
-      reset({});
-    }
-    if (errorSend) {
-      notify.show(errorSend, "error", 3000);
-    }
-    return () => {};
-  }, [successSend, errorSend]);
 
   return (
     <>

@@ -72,14 +72,9 @@ export default function ModalPoleDeclarationUpdate({ item }) {
       charges: chargesArray,
     };
 
-    console.log(declarationUpdated);
     dispatch(updateDeclaration(item._id, declarationUpdated));
   };
 
-  useEffect(() => {
-    console.log(item);
-    return () => {};
-  }, []);
   return (
     <>
       <ReactModal
@@ -89,6 +84,16 @@ export default function ModalPoleDeclarationUpdate({ item }) {
         overlayClassName="overlay-update-declaration overlay"
         onRequestClose={() => setUpdateDeclaration(!update)}
       >
+        <button
+          onClick={() => addRowHandler()}
+          type={"button"}
+          style={{
+            background: "green",
+            margin: "1rem 1rem 1rem auto",
+          }}
+        >
+          <AddIcon />
+        </button>
         <form
           className="form pole-declaration-form"
           onSubmit={handleSubmit(onSubmit)}
@@ -152,24 +157,6 @@ export default function ModalPoleDeclarationUpdate({ item }) {
                 </tr>
               ))}
             </tbody>
-            <tfoot>
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>
-                  <button
-                    onClick={() => addRowHandler()}
-                    type={"button"}
-                    style={{
-                      background: "green",
-                    }}
-                  >
-                    <AddIcon />
-                  </button>
-                </td>
-              </tr>
-            </tfoot>
           </table>
           <div className="declaration-title form-group">
             <label>Titre de votre déclaration</label>

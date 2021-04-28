@@ -93,6 +93,16 @@ export default function ModalPoleDeclarationAdd({ poleId }) {
         overlayClassName="overlay-update-declaration overlay"
         onRequestClose={() => setAddDeclaration(!add)}
       >
+        <button
+          onClick={() => addRowHandler()}
+          type={"button"}
+          style={{
+            background: "green",
+            margin: "1rem 1rem 1rem auto",
+          }}
+        >
+          <AddIcon />
+        </button>
         <form
           className="form pole-declaration-form"
           onSubmit={handleSubmit(onSubmit)}
@@ -153,24 +163,6 @@ export default function ModalPoleDeclarationAdd({ poleId }) {
                 </tr>
               ))}
             </tbody>
-            <tfoot>
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>
-                  <button
-                    onClick={() => addRowHandler()}
-                    type={"button"}
-                    style={{
-                      background: "green",
-                    }}
-                  >
-                    <AddIcon />
-                  </button>
-                </td>
-              </tr>
-            </tfoot>
           </table>
           <div className="declaration-title form-group">
             <label>Souhaitez-vous donner un titre à votre déclaration ?</label>

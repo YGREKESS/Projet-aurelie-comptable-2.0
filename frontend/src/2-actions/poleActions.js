@@ -17,7 +17,6 @@ const getOnePole = (poleId) => async (dispatch) => {
 
     dispatch({ type: "POLE_GET_SUCCESS", payload: data });
   } catch (error) {
-    console.log(error.response);
     dispatch({ type: "POLE_GET_FAIL", payload: error.response.data });
   }
 };
@@ -28,7 +27,6 @@ const getPraticiens = (poleId) => async (dispatch) => {
     const { data } = await axios.get(`/api/poles/${poleId}/praticiens`);
     dispatch({ type: "POLE_GET_PRATICIENS_SUCCESS", payload: data });
   } catch (error) {
-    console.log(error.response);
     dispatch({
       type: "POLE_GET_PRATICIENS_FAIL",
       payload: error.response.data,

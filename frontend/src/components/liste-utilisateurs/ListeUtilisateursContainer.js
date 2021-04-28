@@ -32,6 +32,13 @@ export default function ListeUtilisateurs() {
     error: errorCreate,
   } = userCreate;
 
+  const userSendEmail = useSelector((state) => state.userSendEmail);
+  const {
+    loading: loadingSend,
+    success: successSend,
+    error: errorSend,
+  } = userSendEmail;
+
   const allPolesGet = useSelector((state) => state.allPolesGet);
   const { loading: loadingPole, poles, error: errorPole } = allPolesGet;
 
@@ -55,6 +62,7 @@ export default function ListeUtilisateurs() {
     }
     if (errorCreate) {
       notify.show(errorCreate, "error", 3000);
+      dispatch(userSuccessReset());
     }
     if (successDelete) {
       notify.show("L'utilisateur a été supprimé !", "danger", 3000);
@@ -63,9 +71,25 @@ export default function ListeUtilisateurs() {
     }
     if (errorDelete) {
       notify.show(errorDelete, "error", 3000);
+      dispatch(userSuccessReset());
+    }
+    if (successSend) {
+      notify.show("L'email a été envoyé !", "success", 3000);
+      dispatch(userSuccessReset());
+    }
+    if (errorSend) {
+      notify.show(errorSend, "error", 3000);
+      dispatch(userSuccessReset());
     }
     return () => {};
-  }, [successDelete, errorDelete, successCreate, errorCreate]);
+  }, [
+    successDelete,
+    errorDelete,
+    successCreate,
+    errorCreate,
+    errorSend,
+    successSend,
+  ]);
 
   return (
     <div className="table-liste-utilisateurs">

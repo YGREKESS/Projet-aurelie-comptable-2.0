@@ -47,6 +47,7 @@ export default function FormPasswordUpdate() {
     }
     if (error) {
       notify.show(error, "error", 5000);
+      dispatch(userSuccessReset());
     }
     return () => {};
   }, [success, error]);

@@ -39,10 +39,10 @@ export default function TablePraticienInfos({ praticien }) {
       columns={[
         {
           title: "Déclaration",
-          field: "name",
+          field: "title",
           render: (rowData) =>
-            rowData.name
-              ? rowData.name
+            rowData.title
+              ? rowData.title
               : "Déclaration du " + formatDate(rowData.date),
         },
         {

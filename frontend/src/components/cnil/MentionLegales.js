@@ -31,6 +31,7 @@ export default function MentionLegales() {
     }
     if (errorUpdate) {
       notify.show(errorUpdate, "error", 3000);
+      dispatch(resetSuccessMentions());
     }
     return () => {};
   }, [successUpdate, errorUpdate]);

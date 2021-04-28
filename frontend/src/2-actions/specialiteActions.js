@@ -31,7 +31,6 @@ const getAllSpecialites = (poleId) => async (dispatch) => {
     const { data } = await axios.get(`/api/specialites/all/${poleId}`);
     dispatch({ type: "SPECIALITES_GET_SUCCESS", payload: data });
   } catch (error) {
-    console.log(error.response);
     dispatch({ type: "SPECIALITES_GET_FAIL", payload: error.response.data });
   }
 };

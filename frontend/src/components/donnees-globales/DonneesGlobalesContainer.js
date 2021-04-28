@@ -33,6 +33,7 @@ export default function DonneesGlobales() {
     }
     if (errorUpdate) {
       notify.show(errorUpdate, "error", 3000);
+      dispatch(resetSuccessTranche());
     }
     return () => {};
   }, [successUpdate, errorUpdate]);

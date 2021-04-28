@@ -35,7 +35,6 @@ export default function UpdatePassword() {
   };
 
   useEffect(() => {
-    console.log(id);
     if (success) {
       notify.show("Votre mot de passe a été mis à jour.", "success", 5000);
       dispatch(userSuccessReset());

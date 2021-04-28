@@ -31,7 +31,7 @@ export default function ModalDeclarationDelete({ item }) {
         <div className="modal-delete-body">
           <p>
             Vous êtes sur le point de supprimer :<br />
-            <span>"{item.name}"</span>
+            <span>"{item.title}"</span>
           </p>
           <div className={"buttons-container"}>
             <button

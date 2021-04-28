@@ -43,6 +43,7 @@ export default function PoleDeclarations() {
     }
     if (errorUpdate) {
       notify.show(errorUpdate, "error", 3000, "#0E1717");
+      dispatch(resetSuccessDeclaration());
     }
     if (successAdd) {
       notify.show(
@@ -56,6 +57,7 @@ export default function PoleDeclarations() {
     }
     if (errorAdd) {
       notify.show(errorAdd, "error", 3000, "#0E1717");
+      dispatch(resetSuccessDeclaration());
     }
     if (successDelete) {
       notify.show(
@@ -69,6 +71,7 @@ export default function PoleDeclarations() {
     }
     if (errorDelete) {
       notify.show(errorDelete, "error", 3000, "#0E1717");
+      dispatch(resetSuccessDeclaration());
     }
     return () => {};
   }, [

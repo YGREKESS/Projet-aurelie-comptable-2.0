@@ -186,22 +186,16 @@ export default function Tables({
             return {
               fontSize: "14px",
               padding: "0",
-              backgroundColor: rowData.name === "Nombre" ? "#F9F9F9" : "none",
+              backgroundColor:
+                rowData.name === "Nombre"
+                  ? "#F9F9F9"
+                  : rowData.name === "Recettes annuelles stat."
+                  ? "#F9F9F9"
+                  : "none",
             };
           },
           render: (rowData) =>
-            rowData.name !== "Nombre" ? (
-              <input
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  border: "none",
-                  outline: "none",
-                }}
-                readOnly={true}
-                value={rowData[specialite.name] ? rowData[specialite.name] : ""}
-              />
-            ) : (
+            rowData.name === "Nombre" ? (
               <input
                 style={{
                   width: "100%",
@@ -221,6 +215,38 @@ export default function Tables({
                   setData_Table_1(data_1);
                 }}
                 onBlur={() => calcul_Data_1(data_Table_1)}
+              />
+            ) : rowData.name === "Recettes annuelles stat." ? (
+              <input
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  border: "none",
+                  outline: "none",
+                  backgroundColor: "#F9F9F9",
+                }}
+                defaultValue={rowData[specialite.name]}
+                onChange={(e) => {
+                  let data_1 = data_Table_1;
+
+                  data_1.find(
+                    (charge) => charge.name === "Recettes annuelles stat."
+                  )[specialite.name] = Number(e.target.value);
+
+                  setData_Table_1(data_1);
+                }}
+                onBlur={() => calcul_Data_1(data_Table_1)}
+              />
+            ) : (
+              <input
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  border: "none",
+                  outline: "none",
+                }}
+                readOnly={true}
+                value={rowData[specialite.name] ? rowData[specialite.name] : ""}
               />
             ),
         };
@@ -473,16 +499,15 @@ export default function Tables({
               },
               cellStyle: (cellValue, rowData) => {
                 return {
-                  fontSize: "14px",
                   padding: "16px",
                   fontWeight: "bold",
                   color: "#ffff",
                   fontSize: "20px",
                   backgroundColor:
                     cellValue > 0
-                      ? "red"
+                      ? "#fb5c5c"
                       : cellValue < 0
-                      ? "green"
+                      ? "#589458"
                       : "lightgray",
                 };
               },
@@ -1027,7 +1052,7 @@ export default function Tables({
     });
     data_1[1]["total"] = specialites.reduce((totalValue, currentValue) => {
       return (
-        totalValue + currentValue.honoraires * data_1[0][currentValue.name]
+        totalValue + data_1[1][currentValue.name] * data_1[0][currentValue.name]
       );
     }, 0);
 
@@ -1046,7 +1071,7 @@ export default function Tables({
         pole.surfaceCommuns,
         specialite.surfPropreProf,
         data_1[2]["total"],
-        specialite.honoraires,
+        data_1[1][specialite.name],
         data_1[1]["total"],
         data_1[0]["total"],
         data_1[0][specialite.name]
@@ -1083,7 +1108,7 @@ export default function Tables({
         specialite.surfPropreProf,
         profNonRepresenteeTotal,
         pole.surfaceTotale,
-        specialite.honoraires,
+        data_1[1][specialite.name],
         data_1[1]["total"],
         data_1[0]["total"],
         data_1[0][specialite.name],
@@ -1217,7 +1242,7 @@ export default function Tables({
           // Nombre total de spécialités au sein du pôle
           data_1[0]["total"],
           // Honoraires annuels pour chaque spécialité
-          specialite.honoraires,
+          data_1[1][specialite.name],
           // Honoraires annuels de l'ensemble des spécialités
           data_1[1]["total"],
           // Coef surface loyer
@@ -1683,7 +1708,8 @@ export default function Tables({
       ).toFixed(2) + " %";
     specialites.map((specialite, i) => {
       data_3[11][specialite.name] =
-        ((totalCoutArray[i] / specialite.honoraires) * 100).toFixed(2) + " %";
+        ((totalCoutArray[i] / data_1[1][specialite.name]) * 100).toFixed(2) +
+        " %";
     });
 
     /* Résultats */
@@ -1696,7 +1722,8 @@ export default function Tables({
       }, 0) - totalCout
     );
     specialites.map((specialite, i) => {
-      data_3[12][specialite.name] = specialite.honoraires - totalCoutArray[i];
+      data_3[12][specialite.name] =
+        data_1[1][specialite.name] - totalCoutArray[i];
     });
 
     setData_Table_3(data_3);
@@ -1709,8 +1736,6 @@ export default function Tables({
 
   return (
     <div>
-      <ChartAnalyse />
-
       {!userSelected ? (
         <Table1 columns={columns_Table_1} data={data_Table_1} />
       ) : null}
@@ -1720,6 +1745,13 @@ export default function Tables({
         pole={pole}
         userSelected={userSelected}
       />
+      {userSelected ? (
+        <ChartAnalyse
+          pole={pole}
+          data_2={data_Table_2}
+          userSelected={userSelected}
+        />
+      ) : null}
       {!userSelected ? (
         <Table3 columns={columns_Table_3} data={data_Table_3} />
       ) : null}

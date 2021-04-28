@@ -29,9 +29,14 @@ export default function PolesSante() {
     }
     if (errorDelete) {
       notify.show(errorDelete, "error", 5000, "#0E1717");
+      dispatch(resetSuccessPole());
+    }
+    if (errorAdd) {
+      notify.show(errorAdd, "error", 5000, "#0E1717");
+      dispatch(resetSuccessPole());
     }
     return () => {};
-  }, [error, successAdd, successDelete]);
+  }, [error, successAdd, successDelete, errorAdd]);
 
   return (
     <div

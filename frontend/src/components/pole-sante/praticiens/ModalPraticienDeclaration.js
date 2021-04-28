@@ -14,8 +14,8 @@ export default function ModalPraticienDeclaration({ praticien, declaration }) {
   const { pole } = poleSelected;
 
   const [title, setTitle] = useState(
-    declaration.name
-      ? declaration.name +
+    declaration.title
+      ? declaration.title +
           " - " +
           praticien.lastname +
           " " +
@@ -31,8 +31,6 @@ export default function ModalPraticienDeclaration({ praticien, declaration }) {
           " - " +
           pole.name
   );
-
-  console.log(declaration);
 
   const [watchDeclaration, setWatchDeclaration] = useState(false);
 
