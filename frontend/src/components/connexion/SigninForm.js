@@ -71,6 +71,7 @@ export default function SigninForm() {
           <MessageBox style="success" message="Vous êtes connecté." />
         )}
       </div>
+      <img src="../../images/meeting.png" />
     </form>
   );
 }

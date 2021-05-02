@@ -75,18 +75,15 @@ export default function PoleAnalyse() {
   };
 
   useEffect(() => {
-    if (!praticiens) {
-      dispatch(getPraticiens(id));
-    }
+    dispatch(getPraticiens(id));
+    dispatch(getTranches());
     if (!specialites) {
       dispatch(getAllSpecialites(id));
     }
     if (!declarations) {
       dispatch(getAllDeclarations(id));
     }
-    if (!tranches) {
-      dispatch(getTranches());
-    }
+
     return () => {};
   }, [declarationChoosed, userSelected]);
 
@@ -196,7 +193,7 @@ export default function PoleAnalyse() {
           </div>
         ) : null}
       </div>
-      {declarationChoosed && specialites && (
+      {declarationChoosed && specialites && tranches ? (
         <div className="tables-container">
           <Tables
             key={userSelected}
@@ -209,7 +206,7 @@ export default function PoleAnalyse() {
             userSelected={userSelected}
           />
         </div>
-      )}
+      ) : null}
     </div>
   );
 }

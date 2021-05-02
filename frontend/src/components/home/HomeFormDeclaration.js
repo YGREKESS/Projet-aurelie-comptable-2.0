@@ -10,6 +10,7 @@ import { getInfos } from "../../2-actions/userActions";
 import imageMeeting from "../../images/meeting.png";
 import imagePencil from "../../images/pencil.png";
 import { getOnePole } from "../../2-actions/poleActions";
+import { AiOutlineCheckSquare } from "react-icons/ai";
 
 export default function HomeFormDeclaration() {
   const { userid } = useParams();
@@ -195,7 +196,6 @@ export default function HomeFormDeclaration() {
     }
     if (successAdd) {
       reset({});
-      dispatch(resetSuccessDeclaration());
     }
     return () => {};
   }, [successAdd, user]);
@@ -208,9 +208,18 @@ export default function HomeFormDeclaration() {
     >
       {user && pole ? (
         <div className="user-details">
-          <p>Nom : {user.lastname}</p>
-          <p>Prénom : {user.firstname}</p>
-          <p>Pôle : {pole.name}</p>
+          <p>
+            <strong>Nom : </strong>
+            {user.lastname}
+          </p>
+          <p>
+            <strong>Prénom : </strong>
+            {user.firstname}
+          </p>
+          <p>
+            <strong>Pôle : </strong>
+            {pole.name}
+          </p>
         </div>
       ) : null}
       {/*       <img className="img-pencil" src="/images/pencil.png" />
@@ -232,38 +241,48 @@ export default function HomeFormDeclaration() {
           </div>
         ))}
         <div className="validation-part sous-part">
-          <img className="img-meeting" src="/images/meeting.png" />
-
+          {/*           <img className="img-meeting" src="/images/meeting.png" />
+           */}
           <h2>Validation</h2>
-          <div className="div-form-group-container">
-            <div className="form-group">
-              <div className="">
-                <p>
-                  <input
-                    type="checkbox"
-                    name={"rgpd"}
-                    placeholder=""
-                    className={errors.rgpd ? "error" : ""}
-                    ref={handleRegister({
-                      required: true,
-                    })}
-                  />
-                  En validant votre déclaration, vous acceptez que vos données
-                  soient stockées et analysées dans le but de vous proposer un
-                  accompagnement adapté à votre situation.
-                </p>
-                {errors.rgpd && (
-                  <span className="error">
-                    Merci d'accepter les conditions avant de valider votre
-                    déclaration.
-                  </span>
-                )}
+
+          {successAdd ? (
+            <div className="div-form-group-container">
+              <AiOutlineCheckSquare size={80} />
+              <p>Votre déclaration a été envoyée avec succès !</p>
+            </div>
+          ) : (
+            <div className="div-form-group-container">
+              <div className="form-group">
+                <div className="">
+                  <p>
+                    <input
+                      type="checkbox"
+                      name={"rgpd"}
+                      placeholder=""
+                      className={errors.rgpd ? "error" : ""}
+                      ref={handleRegister({
+                        required: true,
+                      })}
+                    />
+                    En validant votre déclaration, vous acceptez que vos données
+                    soient stockées et analysées dans le but de vous proposer un
+                    accompagnement adapté à votre situation.
+                  </p>
+                  {errors.rgpd && (
+                    <span className="error">
+                      Merci d'accepter les conditions avant de valider votre
+                      déclaration.
+                    </span>
+                  )}
+                </div>
               </div>
             </div>
-          </div>
-          <button form="home-declaration-form" type="submit">
-            Valider ma déclaration
-          </button>
+          )}
+          {!successAdd && (
+            <button form="home-declaration-form" type="submit">
+              Valider ma déclaration
+            </button>
+          )}
         </div>
       </div>
     </form>

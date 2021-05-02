@@ -9,7 +9,7 @@ export default function TableMesDeclarations({ declarations }) {
     <MaterialTable
       title=""
       columns={[
-        { title: "Nom", field: "name" },
+        { title: "Déclaration", field: "title" },
         {
           title: "Date",
           field: "date",

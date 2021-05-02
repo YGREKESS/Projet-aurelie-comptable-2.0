@@ -119,6 +119,7 @@ export default function FormUserInfos({
                   defaultValue={user ? user.specialite : "Aucune"}
                   ref={register()}
                 >
+                  <option value="Aucune">Aucune</option>
                   {metiers.map((metier, i) => (
                     <option value={metier.name} key={i}>
                       {metier.name}

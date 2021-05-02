@@ -109,53 +109,70 @@ export default function UserDeclarationForm({ user }) {
     const declaration = {
       user: user._id,
       pole: user.pole,
-      name: data.name,
+      title: data.title,
       type: "Praticien",
-      loyer: {
-        total: data.loyer,
-      },
-      electricite: {
-        total: data.electricite,
-      },
-      eau: {
-        total: data.eau,
-      },
-      fournAdmin: {
-        total: data.fournAdmin,
-      },
-      fournEntr: {
-        total: data.fournEntr,
-      },
-      menage: {
-        total: data.menage,
-      },
-      assurance: {
-        total: data.assurance,
-      },
-      honoraires: {
-        total: data.honoraires,
-      },
-      annoncesInsertions: {
-        total: data.annoncesInsertions,
-      },
-      fraisPostaux: {
-        total: data.fraisPostaux,
-      },
-      internetTelephone: {
-        total: data.internetTelephone,
-      },
-      fraisBancaires: {
-        total: data.fraisBancaires,
-      },
-      cfe: {
-        total: data.cfe,
-      },
-      receptionDeplacement: {
-        total: data.receptionDeplacement,
-      },
-      petitEquipement: {
-        total: data.petitEquipement,
-      },
+      charges: [
+        {
+          name: "Loyer",
+          total: data.loyer,
+        },
+        {
+          name: "Electricité",
+          total: data.electricite,
+        },
+        {
+          name: "Eau",
+          total: data.eau,
+        },
+        {
+          name: "Fourn. administratives",
+          total: data.fournAdmin,
+        },
+        {
+          name: "Fourn. entretien",
+          total: data.fournEntr,
+        },
+        {
+          name: "Ménage",
+          total: data.menage,
+        },
+        {
+          name: "Assurance",
+          total: data.assurance,
+        },
+        {
+          name: "Honoraires",
+          total: data.honoraires,
+        },
+        {
+          name: "Annonces / Insertions",
+          total: data.annoncesInsertions,
+        },
+        {
+          name: "Frais postaux",
+          total: data.fraisPostaux,
+        },
+        {
+          name: "Internet / Téléphone",
+          total: data.internetTelephone,
+        },
+        {
+          name: "Frais bancaires",
+          total: data.fraisBancaires,
+        },
+        {
+          name: "CFE",
+          total: data.cfe,
+        },
+        {
+          name: "Réception / Déplacement",
+          total: data.receptionDeplacement,
+        },
+        {
+          name: "Petit équipement",
+          total: data.petitEquipement,
+        },
+      ],
     };
     dispatch(addDeclaration(declaration));
   };
@@ -166,12 +183,12 @@ export default function UserDeclarationForm({ user }) {
     >
       <div className="div-form-group-container">
         <div className="form-group">
-          <label htmlFor={"name"} className="">
+          <label htmlFor={"title"} className="">
             Titre
           </label>
           <div className="user-declaration-question-titre-input">
             <p>Quel titre souhaitez vous donner à cette déclaration ?</p>
-            <input name="name" placeholder="" ref={register()} />
+            <input name="title" placeholder="" ref={register()} />
           </div>
         </div>
       </div>

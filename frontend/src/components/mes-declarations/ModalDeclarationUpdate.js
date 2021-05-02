@@ -10,94 +10,94 @@ export default function ModalDeclarationUpdate({ item }) {
     {
       title: "Loyer (€)",
       name: "loyer",
-      defaultValue: item.loyer.total,
+      defaultValue: item.charges[0].total,
       question: "Montant de votre loyer mensuel : ",
     },
     {
       title: "Electricité (€)",
       name: "electricite",
-      defaultValue: item.electricite.total,
+      defaultValue: item.charges[1].total,
       question: "Montant de votre consommation mensuelle en éléctricité :",
     },
     {
       title: "Eau (€)",
       name: "eau",
-      defaultValue: item.eau.total,
+      defaultValue: item.charges[2].total,
       question: "Montant de votre consommation mensuelle d'eau :",
     },
     {
       title: "Fournitures administratives (€)",
       name: "fournAdmin",
-      defaultValue: item.fournAdmin.total,
+      defaultValue: item.charges[3].total,
       question: "Dépenses mensuelles en fournitures administratives :",
     },
     {
       title: "Fournitures entretien (€)",
       name: "fournEntr",
-      defaultValue: item.fournEntr.total,
+      defaultValue: item.charges[4].total,
       question:
         "Dépenses mensuelles en fournitures pour l'entretien de vos locaux :",
     },
     {
       title: "Ménage/entretien et réparations (€)",
       name: "menage",
-      defaultValue: item.menage.total,
+      defaultValue: item.charges[5].total,
       question:
         "Vos dépenses pour le ménage et l'entretien/réparation de vos locaux :",
     },
     {
       title: "Assurance (€)",
       name: "assurance",
-      defaultValue: item.assurance.total,
+      defaultValue: item.charges[6].total,
       question: "Montant de vos dépenses mensuelles en assurance :",
     },
     {
       title: "Honoraires (€)",
       name: "honoraires",
-      defaultValue: item.honoraires.total,
+      defaultValue: item.charges[7].total,
       question: "Montant mensuel de vos honoraires :",
     },
     {
       title: "Annonces et insertions (€)",
       name: "annoncesInsertions",
-      defaultValue: item.annoncesInsertions.total,
+      defaultValue: item.charges[8].total,
       question:
         "Montant de vos dépenses mensuelles en annonces et insertions :",
     },
     {
       title: "Frais postaux (€)",
       name: "fraisPostaux",
-      defaultValue: item.fraisPostaux.total,
+      defaultValue: item.charges[9].total,
       question: "Montant mensuel de vos frais postaux :",
     },
     {
       title: "Internet et téléphone (€)",
       name: "internetTelephone",
-      defaultValue: item.internetTelephone.total,
+      defaultValue: item.charges[10].total,
       question: "Vos dépenses mensuelles pour l'internet / téléphone :",
     },
     {
       title: "Frais bancaires (€)",
       name: "fraisBancaires",
-      defaultValue: item.fraisBancaires.total,
+      defaultValue: item.charges[11].total,
       question: "Montant mensuel de vos frais bancaires :",
     },
     {
       title: "CFE (€)",
       name: "cfe",
-      defaultValue: item.cfe.total,
+      defaultValue: item.charges[12].total,
       question: "Montant mensuel de votre CFE :",
     },
     {
       title: "Réception/déplacement (€)",
       name: "receptionDeplacement",
-      defaultValue: item.receptionDeplacement.total,
+      defaultValue: item.charges[13].total,
       question: "Vos dépenses mensuelles pour vos réceptions et déplacements :",
     },
     {
       title: "Petit équipement (€)",
       name: "petitEquipement",
-      defaultValue: item.petitEquipement.total,
+      defaultValue: item.charges[14].total,
       question: "Vos dépenses mensuelles pour le petit équipement :",
     },
   ];
@@ -109,67 +109,69 @@ export default function ModalDeclarationUpdate({ item }) {
   const onSubmit = (data) => {
     const declarationUpdated = {
       pole: item.pole,
-      name: data.name,
-      loyer: {
-        total: data.loyer,
-        repartition: data.loyerRep,
-      },
-      electricite: {
-        total: data.electricite,
-        repartition: data.electriciteRep,
-      },
-      eau: {
-        total: data.eau,
-        repartition: data.eauRep,
-      },
-      fournAdmin: {
-        total: data.fournAdmin,
-        repartition: data.fournAdminRep,
-      },
-      fournEntr: {
-        total: data.fournEntr,
-        repartition: data.fournEntrRep,
-      },
-      menage: {
-        total: data.menage,
-        repartition: data.menageRep,
-      },
-      assurance: {
-        total: data.assurance,
-        repartition: data.assuranceRep,
-      },
-      honoraires: {
-        total: data.honoraires,
-        repartition: data.honorairesRep,
-      },
-      annoncesInsertions: {
-        total: data.annoncesInsertions,
-        repartition: data.annoncesInsertionsRep,
-      },
-      fraisPostaux: {
-        total: data.fraisPostaux,
-        repartition: data.fraisPostauxRep,
-      },
-      internetTelephone: {
-        total: data.internetTelephone,
-        repartition: data.internetTelephoneRep,
-      },
-      fraisBancaires: {
-        total: data.fraisBancaires,
-        repartition: data.fraisBancairesRep,
-      },
-      cfe: {
-        total: data.cfe,
-        repartition: data.cfeRep,
-      },
-      receptionDeplacement: {
-        total: data.receptionDeplacement,
-        repartition: data.receptionDeplacementRep,
-      },
-      petitEquipement: {
-        total: data.petitEquipement,
-        repartition: data.petitEquipementRep,
-      },
+      title: data.title,
+      charges: [
+        {
+          name: "Loyer",
+          total: data.loyer,
+        },
+        {
+          name: "Electricité",
+          total: data.electricite,
+        },
+        {
+          name: "Eau",
+          total: data.eau,
+        },
+        {
+          name: "Fourn. administratives",
+          total: data.fournAdmin,
+        },
+        {
+          name: "Fourn. entretien",
+          total: data.fournEntr,
+        },
+        {
+          name: "Ménage",
+          total: data.menage,
+        },
+        {
+          name: "Assurance",
+          total: data.assurance,
+        },
+        {
+          name: "Honoraires",
+          total: data.honoraires,
+        },
+        {
+          name: "Annonces / Insertions",
+          total: data.annoncesInsertions,
+        },
+        {
+          name: "Frais postaux",
+          total: data.fraisPostaux,
+        },
+        {
+          name: "Internet / Téléphone",
+          total: data.internetTelephone,
+        },
+        {
+          name: "Frais bancaires",
+          total: data.fraisBancaires,
+        },
+        {
+          name: "CFE",
+          total: data.cfe,
+        },
+        {
+          name: "Réception / Déplacement",
+          total: data.receptionDeplacement,
+        },
+        {
+          name: "Petit équipement",
+          total: data.petitEquipement,
+        },
+      ],
     };
     dispatch(updateDeclaration(item._id, declarationUpdated));
   };
@@ -192,15 +194,15 @@ export default function ModalDeclarationUpdate({ item }) {
         >
           <div className="div-form-group-container">
             <div className="form-group">
-              <label htmlFor="name" className="">
+              <label htmlFor="title" className="">
                 Titre
               </label>
               <div className="user-declaration-question-titre-input">
                 <p>Titre de votre déclaration :</p>
                 <input
-                  name="name"
+                  name="title"
                   placeholder="Ex. Déclaration du 12/12/12"
-                  defaultValue={item.name}
+                  defaultValue={item.title}
                   ref={register()}
                 />
               </div>

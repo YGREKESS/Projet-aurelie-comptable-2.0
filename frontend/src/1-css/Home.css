@@ -71,6 +71,7 @@
   align-items: flex-start;
   background-color: #18202c;
   margin: auto;
+  border-radius: 0;
 }
 .home-declaration-form::-webkit-scrollbar {
   display: none;
@@ -79,7 +80,7 @@
   align-items: center;
 }
 .home-declaration-form .user-details {
-  padding: 2rem;
+  padding: 1rem;
   position: absolute;
   top: 0;
   left: 0;
@@ -87,6 +88,18 @@
   border-radius: 0;
   background-color: #379ce5;
   color: #ffff;
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  border: 3px double #ffff;
+}
+.home-declaration-form .user-details p {
+  margin-top: 0;
+  width: 100%;
+}
+.home-declaration-form .user-details p strong {
+  font-weight: 800;
 }
 .img-pencil {
   position: absolute;
@@ -181,6 +194,7 @@
   margin-bottom: 0;
   margin-left: auto;
   width: 4rem;
+  background-color: #ffff;
 }
 .register-part .div-form-group-container .form-group select {
   width: 100%;
@@ -188,7 +202,7 @@
 
 /* Validation part */
 .validation-part.sous-part {
-  margin: 16rem auto 4rem auto;
+  margin: 4rem auto 4rem auto;
   padding: 0;
   min-height: 0;
   box-shadow: none;
@@ -202,6 +216,16 @@
 .validation-part.sous-part .div-form-group-container {
   width: 80%;
   margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 12rem;
+  height: auto;
+  transition: 0.25s;
+}
+.validation-part.sous-part .div-form-group-container svg {
+  color: green;
 }
 .validation-part h2 {
   margin: 0;
@@ -306,6 +330,10 @@
   margin-bottom: 2rem;
   padding: 2rem;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.contact-form.auth {
+  background-color: transparent;
+  box-shadow: none;
 }
 .contact-form .form-group,
 .last-firstname-container {

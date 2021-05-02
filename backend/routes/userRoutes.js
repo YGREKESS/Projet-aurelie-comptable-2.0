@@ -13,7 +13,6 @@ import dotenv from "dotenv";
 import {
   templateContactEmail,
   templateDemandeDeclaEmail,
-  templateInfosCompteEmail,
   templatePasswordForgetEmail,
 } from "../utils/template.js";
 
@@ -177,12 +176,9 @@ router.post("/create-user", isAuth, isAdmin, async (req, res) => {
 });
 
 router.post("/send-email", async (req, res) => {
-  console.log(req.body.user);
+  console.log(req.body);
   let emailHtml = "";
   switch (req.body.subject) {
-    case "Connexion à votre compte utilisateur.":
-      emailHtml = templateInfosCompteEmail(req.body.user);
-      break;
     case "Lien de rédaction de votre déclaration.":
       emailHtml = templateDemandeDeclaEmail(req.body.user);
       break;

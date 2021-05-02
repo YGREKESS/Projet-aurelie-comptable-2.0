@@ -18,7 +18,7 @@ function App() {
   return (
     <HashRouter hashType="slash">
       <div className="App">
-        <Route path="/" exact component={HomeDeclaration} />
+        <Route path="/" exact component={AuthPage} />
         <Route
           path="/saisir-ma-declaration/:userid"
           component={HomeDeclaration}
