@@ -21,7 +21,6 @@ const isAuth = (req, res, next) => {
 };
 
 const isAdmin = (req, res, next) => {
-  console.log(req);
   if (req.user && req.user.statut === "Administrateur") {
     return next();
   }

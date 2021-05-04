@@ -7,7 +7,7 @@ import {
   calculRepartitionSurfaceNonRep,
   calculRepartitionTaxeSalaire,
   repartitionName,
-} from "../../../utils";
+} from "./calculsRepartition";
 import ChartAnalyse from "./ChartAnalyse";
 import Table1 from "./Table1";
 import Table2 from "./Table2";
@@ -114,7 +114,6 @@ export default function Tables({
       cellStyle: {
         fontSize: "14px",
         padding: "0 16px",
-        backgroundColor: "#F9F9F9",
       },
     },
     {
@@ -353,7 +352,6 @@ export default function Tables({
       cellStyle: {
         fontSize: "14px",
         padding: "0 16px",
-        backgroundColor: "#F9F9F9",
       },
     },
     {
@@ -632,8 +630,6 @@ export default function Tables({
       cellStyle: {
         fontSize: "14px",
         padding: "0 16px",
-        backgroundColor: "#F9F9F9",
-        cursor: "auto",
       },
     },
     {
@@ -1546,19 +1542,19 @@ export default function Tables({
         return totalValue + currentValue * data_1[0][specialites[i].name];
       }, 0) * 12
     );
-    (data_3[3]["fixe"] =
+    data_3[3]["fixe"] =
       repartitionTaxeSalaires === "ponderation"
         ? (
             (data_3[3]["total"] / data_1[0]["total"]) *
             ponderation.partFixe
           ).toFixed(2)
-        : ""),
-      /* Coût salarial */
-      (data_3[4]["total"] = Math.round(
-        Number(data_3[3]["total"]) +
-          Number(data_3[1]["total"]) +
-          Number(data_3[2]["total"])
-      ));
+        : "";
+    /* Coût salarial */
+    data_3[4]["total"] = Math.round(
+      Number(data_3[3]["total"]) +
+        Number(data_3[1]["total"]) +
+        Number(data_3[2]["total"])
+    );
     specialites.map((specialite, i) => {
       data_3[4][specialite.name] =
         Number(salairesBrut[i]) +
@@ -1600,10 +1596,6 @@ export default function Tables({
         data_1[1][specialite.name],
         // Total recettes annuelles
         data_1[1]["total"],
-        // Nombre salariés en ETP par spécialité (D31:J31)
-        data_3[0][specialite.name],
-        // Total annuel nombre d'heures salariés en ETP (K31)
-        data_3[0]["totalAnnuel"],
         // Coef surface charges
         specialite.nombre === 0
           ? 0

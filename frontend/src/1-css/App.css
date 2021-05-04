@@ -77,9 +77,6 @@ textarea {
 .modal-delete-body .buttons-container button {
   margin: 0;
 }
-.modal-praticien-declaration {
-  min-height: 90vh;
-}
 /* Buttons */
 button,
 a.button {

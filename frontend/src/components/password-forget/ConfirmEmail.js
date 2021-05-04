@@ -30,7 +30,11 @@ export default function ConfirmEmail() {
 
   useEffect(() => {
     if (success) {
-      notify.show("Email envoyé avec succés !", "success", 5000);
+      notify.show(
+        "Un email avec un lien de réinitialisation vient de vous être envoyé.",
+        "success",
+        5000
+      );
       dispatch(userSuccessReset());
       reset({});
     }

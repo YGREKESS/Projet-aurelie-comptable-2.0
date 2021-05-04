@@ -34,6 +34,10 @@ const getPraticiens = (poleId) => async (dispatch) => {
   }
 };
 
+const getPraticiensReset = () => (dispatch) => {
+  dispatch({ type: "POLE_GET_PRATICIENS_RESET" });
+};
+
 const addPole = (pole) => async (dispatch) => {
   dispatch({ type: "POLE_ADD_REQUEST" });
   try {
@@ -78,4 +82,5 @@ export {
   deletePole,
   resetSuccessPole,
   getPraticiens,
+  getPraticiensReset,
 };

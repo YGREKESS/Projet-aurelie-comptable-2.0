@@ -175,7 +175,7 @@ export default function FormUserInfos({
             >
               Envoyer un lien pour la rédaction d'une déclaration.
             </button>
-            <button
+            {/* <button
               onClick={() =>
                 dispatch(
                   sendEmail(
@@ -189,7 +189,7 @@ export default function FormUserInfos({
               }
             >
               Envoyer un mail contenant les informations de connexion au compte.
-            </button>
+            </button> */}
           </div>
         </div>
       ) : null}

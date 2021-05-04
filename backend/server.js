@@ -36,10 +36,10 @@ app.use("/api/donnees-globales", donneesGlobaleRouter);
 
 const __dirname = path.resolve();
 app.use("/fiche-registre", express.static(path.join(__dirname, "/documents")));
-app.use(express.static(path.join(__dirname, "/frontend/dist")));
+/* app.use(express.static(path.join(__dirname, "/frontend/dist")));
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "/frontend/dist/index.html"));
-});
+}); */
 
 app.listen(process.env.PORT || 5000, () => {
   console.log(`Votre serveur a démarré sur le port ${process.env.PORT}`);

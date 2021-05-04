@@ -23,6 +23,8 @@ const mg = mailgun({
   domain: process.env.MAILGUN_DOMAIN,
 });
 
+const url = "http://localhost:3000/#/";
+
 const router = express.Router();
 
 router.get("/", isAuth, isAdmin, async (req, res) => {
@@ -62,14 +64,21 @@ router.delete("/delete-user/:id", isAuth, isAdmin, async (req, res) => {
 });
 
 router.put("/update-user", isAuth, async (req, res) => {
-  console.log(req.body);
-  const { error } = updateValidation(req.body.user);
+  /*   console.log(req.body);
+   */ const { error } = updateValidation(req.body.user);
   if (error) {
     return res.status(400).send(error.details[0].message);
   }
   try {
     const user = await User.findById(req.body.user._id);
+    const declarations = await Declaration.find({ user: req.body.user._id });
     if (user) {
+      if (declarations) {
+        declarations.map((declaration) => {
+          declaration.pole = req.body.user.pole;
+          const declarationSaved = declaration.save();
+        });
+      }
       user.lastname = req.body.user.lastname;
       user.firstname = req.body.user.firstname;
       user.email = req.body.user.email;
@@ -180,15 +189,15 @@ router.post("/send-email", async (req, res) => {
   let emailHtml = "";
   switch (req.body.subject) {
     case "Lien de rédaction de votre déclaration.":
-      emailHtml = templateDemandeDeclaEmail(req.body.user);
+      emailHtml = templateDemandeDeclaEmail(req.body.user, url);
       break;
     case "Demande d'information.":
-      emailHtml = templateContactEmail(req.body.message);
+      emailHtml = templateContactEmail(req.body.message, url);
       break;
     case "Mot de passe oublié.":
       try {
         const user = await User.findOne({ email: req.body.email });
-        emailHtml = templatePasswordForgetEmail(user);
+        emailHtml = templatePasswordForgetEmail(user, url);
       } catch (error) {
         return res.status(400).send("Cette adresse email est inconnue.");
       }
@@ -199,7 +208,13 @@ router.post("/send-email", async (req, res) => {
 
   const data = {
     from: `YOU@YOUR_DOMAIN_NAME.COM`,
-    to: `${req.body.to ? req.body.to : "youssef.seghrouchni79@gmail.com"}`,
+    to: `${
+      req.body.to
+        ? req.body.to
+        : req.body.message
+        ? req.body.message.from
+        : "youssef.seghrouchni79@gmail.com"
+    }`,
     subject: `${req.body.subject}`,
     html: emailHtml,
   };

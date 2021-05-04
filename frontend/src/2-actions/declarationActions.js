@@ -37,7 +37,7 @@ const markAsSeen = (declarationId) => async (dispatch) => {
   }
 };
 
-const getAllDeclarations = (id) => async (dispatch) => {
+const getAllDeclarations = (id = "") => async (dispatch) => {
   dispatch({ type: "DECLARATIONS_GET_REQUEST" });
   try {
     const { data } = await axios.get(`/api/declarations/all/${id}`);

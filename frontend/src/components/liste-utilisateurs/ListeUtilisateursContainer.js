@@ -8,6 +8,7 @@ import { userSuccessReset } from "../../2-actions/userActions";
 import { getMetiers } from "../../2-actions/DonneeGlobaleActions";
 import LoadingSpinner from "../LoadingSpinner";
 import ModalUserAdd from "./ModalUserAdd";
+import { getAllDeclarations } from "../../2-actions/declarationActions";
 
 export default function ListeUtilisateurs() {
   const dispatch = useDispatch();
@@ -67,6 +68,7 @@ export default function ListeUtilisateurs() {
     if (successDelete) {
       notify.show("L'utilisateur a été supprimé !", "danger", 3000);
       dispatch(getAllUsers(userLoginInfos.token));
+      dispatch(getAllDeclarations());
       dispatch(userSuccessReset());
     }
     if (errorDelete) {

@@ -52,33 +52,5 @@ export default function ModalUserInfos({ user, poles, metiers }) {
         <SearchIcon />
       </button>
     </>
-    /*     <form className="form user-infos-form" onSubmit={handleSubmit(onSubmit)}>
-      <div className="form-group">
-        <label htmlFor={"poleAffilie"}>Pôle affilié</label>
-        <input
-          name={"poleAffilie"}
-          className="disabled"
-          placeholder=""
-          defaultValue={""}
-          disabled
-          ref={register()}
-        />
-      </div>
-      {formUser.map((input, i) => (
-        <div className="form-group" key={i}>
-          <label htmlFor={input.name} className="">
-            {input.label}
-          </label>
-          <input
-            name={input.name}
-            className={input.disabled ? "disabled" : ""}
-            placeholder=""
-            defaultValue={input.defaultValue}
-            disabled={input.disabled}
-            ref={register()}
-          />
-        </div>
-      ))}
-    </form> */
   );
 }

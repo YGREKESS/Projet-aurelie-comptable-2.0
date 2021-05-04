@@ -15,9 +15,15 @@ const mg = mailgun({
 
 const router = express.Router();
 
-router.get("/all/:poleId", async (req, res) => {
+router.get("/all/:id?", async (req, res) => {
+  let declarations;
   try {
-    const declarations = await Declaration.find({ pole: req.params.poleId });
+    if (req.params.id) {
+      declarations = await Declaration.find({ pole: req.params.id });
+    } else {
+      declarations = await Declaration.find({ type: "Praticien" });
+    }
+    console.log(declarations);
     res.status(200).send(declarations);
   } catch (error) {
     res

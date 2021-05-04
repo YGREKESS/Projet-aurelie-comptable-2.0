@@ -26,7 +26,7 @@ export default function ModalPraticienInfos({ poleId, praticien }) {
     <>
       <ReactModal
         isOpen={update}
-        className="modal-update-specialite modal"
+        className="modal-praticien-infos modal"
         ariaHideApp={false}
         overlayClassName="overlay-update-specialite overlay"
         onRequestClose={() => {

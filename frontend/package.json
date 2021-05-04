@@ -72,8 +72,8 @@
     "postcss-loader": "^5.2.0",
     "postcss-preset-env": "^6.7.0",
     "url-loader": "^4.1.1",
-    "webpack": "^5.28.0",
+    "webpack": "^4.44.2",
     "webpack-cli": "^4.6.0",
-    "webpack-dev-server": "^3.11.2"
+    "webpack-dev-server": "^3.11.0"
   }
 }

@@ -86,19 +86,22 @@
   left: 0;
   text-align: left;
   border-radius: 0;
-  background-color: #379ce5;
-  color: #ffff;
-  width: fit-content;
-  height: fit-content;
+  background-color: aliceblue;
+  width: auto;
+  max-width: 200px;
+  height: auto;
   display: flex;
   flex-direction: column;
-  border: 3px double #ffff;
+  justify-content: center;
+  align-items: flex-start;
+  border: 3px solid #ffff;
 }
 .home-declaration-form .user-details p {
   margin-top: 0;
   width: 100%;
 }
 .home-declaration-form .user-details p strong {
+  color: #379ce5;
   font-weight: 800;
 }
 .img-pencil {

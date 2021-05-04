@@ -259,9 +259,12 @@
   font-weight: 400;
   margin-bottom: 15px;
 }
-.password-update-form .div-form-group-container .form-validate {
-  width: 72%;
+.password-update-form .form-validate {
+  width: 50%;
   margin-bottom: 2rem;
+}
+.password-update-form .form-validate button {
+  width: 100%;
 }
 /* MES DECLARATION */
 .form.user-declaration-form {
@@ -838,6 +841,7 @@
   padding: 0;
   text-align: center;
   margin-bottom: 0;
+  background-color: #f9f9f9;
 }
 /* Accordeon */
 
@@ -976,7 +980,7 @@
   height: auto;
   /*   min-height: 1200px;
  */
-  width: 1000px;
+  width: 100%;
   margin: auto;
 }
 .chart-analyse-page .to-pdf {
@@ -989,7 +993,7 @@
   align-items: center;
   justify-content: space-between;
 }
-.user-details {
+.chart-analyse-page .user-details {
   width: 100%;
   display: flex;
   justify-content: space-around;
@@ -997,14 +1001,15 @@
   align-items: center;
   margin-bottom: 5rem;
 }
-.user-details p {
+.chart-analyse-page .user-details p {
   white-space: nowrap;
   background: #379ce5;
   display: block;
   width: auto;
   height: auto;
-  padding: 0.5rem;
+  padding: 1rem;
   color: #ffff;
+  font-size: 30px;
 }
 .chart-container {
   width: 80%;
@@ -1020,6 +1025,15 @@
   font: 400 20px "Roboto", sans-serif;
   height: 3rem;
   text-transform: uppercase;
+}
+/* Praticiens */
+.modal-praticien-infos {
+  height: 90vh;
+  min-height: 800px;
+}
+.modal-praticien-declaration {
+  height: 90vh;
+  min-height: 800px;
 }
 
 /* DONNEES GLOBALES */

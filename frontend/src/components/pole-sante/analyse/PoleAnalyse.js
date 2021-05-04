@@ -75,8 +75,12 @@ export default function PoleAnalyse() {
   };
 
   useEffect(() => {
-    dispatch(getPraticiens(id));
-    dispatch(getTranches());
+    if (!tranches) {
+      dispatch(getTranches());
+    }
+    if (!praticiens) {
+      dispatch(getPraticiens(id));
+    }
     if (!specialites) {
       dispatch(getAllSpecialites(id));
     }
@@ -85,7 +89,7 @@ export default function PoleAnalyse() {
     }
 
     return () => {};
-  }, [declarationChoosed, userSelected]);
+  }, [declarationChoosed]);
 
   return (
     <div className="pole-analyse-page page">

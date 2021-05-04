@@ -8,11 +8,6 @@ import PoleSpecialites from "./specialites/PoleSpecialites";
 import { useDispatch, useSelector } from "react-redux";
 import { getOnePole } from "../../2-actions/poleActions";
 import PolePraticiens from "./praticiens/PolePraticiens";
-import {
-  resetDeclarationSelected,
-  resetPoleDeclarations,
-} from "../../2-actions/declarationActions";
-import { resetPoleSpecialites } from "../../2-actions/specialiteActions";
 import Notifications, { notify } from "react-notify-toast";
 
 export default function PoleSanteDashboard() {
@@ -45,9 +40,7 @@ export default function PoleSanteDashboard() {
     if (errorUpdate) {
       notify.show(errorUpdate, "error", 5000, "#0E1717");
     }
-    return () => {
-      dispatch(resetDeclarationSelected());
-    };
+    return () => {};
   }, [pole, successUpdate]);
 
   return (

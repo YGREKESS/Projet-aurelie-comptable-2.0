@@ -3,13 +3,26 @@ import MaterialTable from "material-table";
 import { Link } from "react-router-dom";
 import SearchIcon from "@material-ui/icons/Search";
 import ModalPoleDelete from "./ModalPoleDelete";
+import NotificationsIcon from "@material-ui/icons/Notifications";
 
-export default function TablePolesSante({ poles }) {
+export default function TablePolesSante({ poles, declarations }) {
   return (
     <MaterialTable
       title=""
       columns={[
         { title: "Nom", field: "name" },
+        {
+          render: (rowData) =>
+            declarations
+              .filter((declaration) => declaration.pole === rowData._id)
+              .filter((declaration) => declaration.type === "Praticien")
+              .filter((declaration) => declaration.seen === false).length >
+            0 ? (
+              <NotificationsIcon style={{ color: "red" }} />
+            ) : (
+              ""
+            ),
+        },
         {
           title: "",
           field: "",

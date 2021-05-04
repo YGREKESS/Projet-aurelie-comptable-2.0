@@ -28,9 +28,7 @@ export default function PoleDeclarations() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (!declarations) {
-      dispatch(getAllDeclarations(id));
-    }
+    dispatch(getAllDeclarations(id));
     if (successUpdate) {
       notify.show(
         "Les modifications ont été enregistrées !",

@@ -14,6 +14,8 @@ import RecentActorsIcon from "@material-ui/icons/RecentActors";
 import GavelIcon from "@material-ui/icons/Gavel";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
+import NotificationsIcon from "@material-ui/icons/Notifications";
+import { getAllDeclarations } from "../2-actions/declarationActions";
 
 const categories = [
   {
@@ -108,6 +110,9 @@ export default function Navigator() {
     }
   };
 
+  const allDeclarationsGet = useSelector((state) => state.allDeclarationsGet);
+  const { loading, declarations = [], error } = allDeclarationsGet;
+
   const userInfos = useSelector((state) => state.userInfos);
   const { loading: loadingUser, user, error: errorUser } = userInfos;
 
@@ -116,6 +121,11 @@ export default function Navigator() {
   const logoutHandler = () => {
     dispatch(logout());
   };
+
+  useEffect(() => {
+    dispatch(getAllDeclarations());
+    return () => {};
+  }, []);
 
   return (
     <div className="navigator">
@@ -164,6 +174,22 @@ export default function Navigator() {
                   <li>
                     {listItem.icon}
                     {listItem.id}
+                    {listItem.id === "Pôles Santé" ? (
+                      declarations
+                        .filter(
+                          (declaration) => declaration.type === "Praticien"
+                        )
+                        .filter((declaration) => declaration.seen === false)
+                        .length > 0 ? (
+                        <NotificationsIcon
+                          style={{
+                            color: "red",
+                            fontSize: "20px",
+                            marginLeft: ".5rem",
+                          }}
+                        />
+                      ) : null
+                    ) : null}
                   </li>
                 </NavLink>
               ))}
